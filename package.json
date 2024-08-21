@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy": "ng deploy --base-href https://osedhelu.github.io/inventory-app-ang/ --repo https://github.com/osedhelu/inventory-app-ang.git"
   },
   "private": true,
   "dependencies": {
@@ -29,6 +30,7 @@
     "@angular/cli": "~16.1.0",
     "@angular/compiler-cli": "^16.1.0",
     "@types/jasmine": "~4.3.0",
+    "angular-cli-ghpages": "^2.0.1",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
