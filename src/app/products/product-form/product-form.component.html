@@ -1,0 +1,73 @@
+<div class="example-container">
+    <h2>
+        {{ getFormTitle() }}
+
+    </h2>
+    <form [formGroup]="product" (ngSubmit)="onSubmit()">
+        <div class="custom-row">
+            <mat-form-field>
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="name" placeholder="Simple placeholder" />
+                <mat-error *ngIf="product.get('name')?.hasError('required')">
+                    El nombre es requerido.
+                </mat-error>
+                <mat-error *ngIf="product.get('name')?.hasError('minlength')">
+                    El nombre debe tener al menos 3 caracteres.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Descripción</mat-label>
+                <input matInput formControlName="description" placeholder="Simple placeholder" />
+                <mat-error *ngIf="product.get('description')?.hasError('required')">
+                    La descripción es requerida.
+                </mat-error>
+                <mat-error *ngIf="product.get('description')?.hasError('minlength')">
+                    La descripción debe tener al menos 10 caracteres.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Categoría</mat-label>
+                <input matInput formControlName="category" placeholder="Simple placeholder" />
+                <mat-error *ngIf="product.get('category')?.hasError('required')">
+                    La categoría es requerida.
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="custom-row">
+            <mat-form-field>
+                <mat-label>Precio</mat-label>
+                <input matInput formControlName="price" type="number" placeholder="Simple placeholder"
+                    (input)="onInputChange($event)" />
+                <mat-error *ngIf="product.get('price')?.hasError('required')">
+                    El precio es requerido.
+                </mat-error>
+                <mat-error *ngIf="product.get('price')?.hasError('min')">
+                    El precio debe ser mayor que 0.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Cantidad en Stock</mat-label>
+                <input matInput formControlName="stock" type="number" placeholder="Simple placeholder"
+                    (input)="onInputChange($event)" />
+                <mat-error *ngIf="product.get('stock')?.hasError('required')">
+                    La cantidad en stock es requerida.
+                </mat-error>
+                <mat-error *ngIf="product.get('stock')?.hasError('min')">
+                    La cantidad en stock no puede ser negativa.
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="custom-row">
+            <mat-checkbox formControlName="available" color="primary" class="example-margin">Disponible</mat-checkbox>
+        </div>
+
+        <div class="container-button-submit">
+            <button mat-stroked-button color="primary" type="submit" [disabled]="!product.valid">Registrar</button>
+        </div>
+    </form>
+</div>
